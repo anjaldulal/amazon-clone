@@ -18,7 +18,12 @@
 }
 
 .product-price {
+    margin-top: 5px;
     margin-bottom: 5px;
+}
+
+.product-rating {
+    display: flex;
 }
 
 .product>img {
