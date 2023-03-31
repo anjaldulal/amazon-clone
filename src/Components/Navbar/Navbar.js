@@ -2,12 +2,14 @@ import React from 'react';
 import './Navbar.css';
 import SearchIcon from '@mui/icons-material/Search';
 import ShoppingBasketIcon from '@mui/icons-material/ShoppingBasket';
+import { Link } from 'react-router-dom';
 
 function Navbar() {
     return (
         <div className="navbar">
-            <img className='navbar-logo' src="https://companieslogo.com/img/orig/AMZN_BIG.D-8fb0be81.png?t=1632523695" alt="amazon-logo" />
-            {/* <img className='navbar-logo' src="https://www.pinclipart.com/picdir/middle/358-3584545_rolling-pin-clip-art.png" alt="amazon-logo" /> */}
+            <Link to="/">
+                <img className='navbar-logo' src="https://companieslogo.com/img/orig/AMZN_BIG.D-8fb0be81.png?t=1632523695" alt="amazon-logo" />
+            </Link>
 
             <div className="navbar-search">
                 <input type="text" className='navbar-searchbar' /><SearchIcon className='navbar-searchIcon' />
@@ -26,10 +28,13 @@ function Navbar() {
                     <span className='navbar-optionLineOne'>Your</span>
                     <span className='navbar-optionLineTwo'>Prime</span>
                 </div>
-                <div className="navbar-cart">
-                    <ShoppingBasketIcon />
-                    <span className='navbar-optionLineTwo navbar-basketCount'>0</span>
-                </div>
+
+                <Link to="/checkout">
+                    <div className="navbar-cart">
+                        <ShoppingBasketIcon />
+                        <span className='navbar-optionLineTwo navbar-basketCount'>0</span>
+                    </div>
+                </Link>
             </div>
         </div>
     );
