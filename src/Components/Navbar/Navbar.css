@@ -42,6 +42,10 @@
     justify-content: space-evenly;
 }
 
+.navbar-nav>a {
+    text-decoration: none;
+}
+
 .navbar-option {
     display: flex;
     flex-direction: column;

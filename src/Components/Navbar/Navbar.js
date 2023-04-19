@@ -20,14 +20,19 @@ function Navbar() {
             </div>
 
             <div className="navbar-nav">
-                <div className="navbar-option">
-                    <span className='navbar-optionLineOne'>Hello, Sign in</span>
-                    <span className='navbar-optionLineTwo'>Account & Lists</span>
-                </div>
+
+                <Link to="/login">
+                    <div className="navbar-option">
+                        <span className='navbar-optionLineOne'>Hello, Sign in</span>
+                        <span className='navbar-optionLineTwo'>Account & Lists</span>
+                    </div>
+                </Link>
+
                 <div className="navbar-option">
                     <span className='navbar-optionLineOne'>Returns</span>
                     <span className='navbar-optionLineTwo'>& Orders</span>
                 </div>
+
                 <div className="navbar-option">
                     <span className='navbar-optionLineOne'>Your</span>
                     <span className='navbar-optionLineTwo'>Prime</span>

@@ -9,7 +9,9 @@
 .feature-banner-image {
     width: 100%;
     z-index: -1;
+    /* margin bottom is added so that the element below it appears upper than its normal position */
     margin-bottom: -200px;
+    /* covering image with a gradient */
     mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0));
 }
 

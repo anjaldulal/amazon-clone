@@ -3,6 +3,7 @@ import './Checkout.css';
 import Subtotal from '../Subtotal/Subtotal';
 import { useStateValue } from '../../StateProvider';
 import CheckoutProduct from './CheckoutProduct';
+import { nanoid } from 'nanoid';
 
 function Checkout() {
 
@@ -18,6 +19,7 @@ function Checkout() {
                     {basket?.map((item) => {
                         return (
                             <CheckoutProduct
+                                key={nanoid()}
                                 id={item.id}
                                 title={item.title}
                                 price={item.price}
