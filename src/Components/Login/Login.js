@@ -1,21 +1,36 @@
 import React, { useState } from 'react';
 import './Login.css';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import { auth } from '../../firebase';
 
 
 function Login() {
 
+    const history = useNavigate();
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
 
     const signIn = (e) => {
         e.preventDefault();
-        // do some fancy firebase login
+        auth.signInWithEmailAndPassword(email, password)
+            .then((auth) => {
+                // console.log(auth);
+                history('/');
+            })
+            .catch((error) => console.log("Login Error Message >>>", error.message));
     }
 
     const signUp = (e) => {
         e.preventDefault();
-        // do some fancy firebase register
+        auth.createUserWithEmailAndPassword(email, password)
+            .then((auth) => {
+                // console.log(auth);
+
+                if (auth) {
+                    history('/');
+                }
+            })
+            .catch((error) => console.log("Register Error Message >>>", error.message));
     }
 
     return (
@@ -29,11 +44,12 @@ function Login() {
                 <h1>Sign In</h1>
                 <form>
                     <h5>E-mail</h5>
-                    <input type="email" value={email} onChange={e => setEmail
-                        (e.target.value)} />
+                    <input type="email" value={email}
+                        onChange={e => setEmail(e.target.value)} />
 
                     <h5>Password</h5>
-                    <input type="password" value={password} onChange={e => setPassword(e.target.password)} />
+                    <input type="password" value={password}
+                        onChange={e => setPassword(e.target.value)} />
 
                     <button className='login-signin-button' type='submit' onClick={signIn}>Sign In</button>
                 </form>
