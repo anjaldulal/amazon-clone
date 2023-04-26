@@ -8,8 +8,11 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { auth } from './firebase';
 import { useStateValue } from './StateProvider';
 import Payment from './Components/Payment/Payment';
+import { loadStripe } from '@stripe/stripe-js';
+import { Elements } from '@stripe/react-stripe-js';
 
-
+const promise = loadStripe(
+  'pk_test_51N16RMSD8cmKL1k1iTB5MwKFqL61RyOZfwDSh7zIwlsvfBuUuTFp0XfNVbhUe7vhWlCJPpJiYeEPF1HYfteDWtLS00yMCayaON');
 
 function App() {
 
@@ -19,7 +22,6 @@ function App() {
   useEffect(() => {
     // this will only run once when the app component loads
     auth.onAuthStateChanged(authUser => {
-      console.log('THE USEr IS >>>', authUser);
 
       if (authUser) {
         // the user just logged in /the user was logged in
@@ -78,7 +80,9 @@ const PaymentWithHeader = () => {
   return (
     <>
       <Navbar />
-      <Payment />
+      <Elements stripe={promise}>
+        <Payment />
+      </Elements>
     </>
   );
 }

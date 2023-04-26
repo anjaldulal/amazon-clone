@@ -14,7 +14,6 @@ function Login() {
         e.preventDefault();
         auth.signInWithEmailAndPassword(email, password)
             .then((auth) => {
-                // console.log(auth);
                 history('/');
             })
             .catch((error) => console.log("Login Error Message >>>", error.message));
@@ -24,7 +23,6 @@ function Login() {
         e.preventDefault();
         auth.createUserWithEmailAndPassword(email, password)
             .then((auth) => {
-                // console.log(auth);
 
                 if (auth) {
                     history('/');
