@@ -12,6 +12,7 @@ function Subtotal() {
     const handleCheckout = (e) => {
         history('/payment');
     }
+
     return (
         <div className="subtotal">
             <CurrencyFormat renderText={(value) => {

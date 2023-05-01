@@ -9,6 +9,8 @@ function Login() {
     const history = useNavigate();
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+    // only for popup success msg after register
+    // const [newAuth, setNewAuth] = useState(null);
 
     const signIn = (e) => {
         e.preventDefault();
@@ -26,6 +28,10 @@ function Login() {
 
                 if (auth) {
                     history('/');
+
+                    // only for popup success message after register
+                    // setNewAuth(auth);
+
                 }
             })
             .catch((error) => console.log("Register Error Message >>>", error.message));
@@ -53,6 +59,9 @@ function Login() {
                 </form>
                 <p>By signing-in you agree to Amazon's Conditions of Use and Privacy Notice.</p>
                 <button className='login-signup-button' onClick={signUp}>Create your Amazon Account</button>
+
+                {/* if we want to render a popup for success register, below register button */}
+                {/* {newAuth && <div>Register Successfully, Please Login!!!!</div>} */}
             </div>
 
         </div>

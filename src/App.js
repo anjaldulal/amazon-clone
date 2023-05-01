@@ -10,21 +10,24 @@ import { useStateValue } from './StateProvider';
 import Payment from './Components/Payment/Payment';
 import { loadStripe } from '@stripe/stripe-js';
 import { Elements } from '@stripe/react-stripe-js';
+import Orders from './Components/Order/Orders';
 
 const promise = loadStripe(
-  'pk_test_51N16RMSD8cmKL1k1iTB5MwKFqL61RyOZfwDSh7zIwlsvfBuUuTFp0XfNVbhUe7vhWlCJPpJiYeEPF1HYfteDWtLS00yMCayaON');
+  'pk_test_51N2VilJLa1Q9hurIX6cm2Su1V2ynonrMllDUNwcCSXl0LRg3Fm2fMiqh7qArZU5YDVP1ReEZaIklkX4doMQ2rTjP00B8IhqfZB');
 
 function App() {
 
   const [{ }, dispatch] = useStateValue();
 
 
+  // this will only run once when the app component loads
   useEffect(() => {
-    // this will only run once when the app component loads
-    auth.onAuthStateChanged(authUser => {
 
+    auth.onAuthStateChanged(authUser => {
+      // console.log("User logins or logut");
       if (authUser) {
         // the user just logged in /the user was logged in
+        // console.log("User logins");
 
         dispatch({
           type: 'SET_USER',
@@ -33,6 +36,7 @@ function App() {
 
       } else {
         // the user was logged out
+        // console.log("User logut");
 
         dispatch({
           type: 'SET_USER',
@@ -51,6 +55,7 @@ function App() {
           <Route path='/login' element={<Login />} />  {/* rendering login page without header */}
           <Route path='/checkout' element={<CheckoutWithHeader />} />
           <Route path='/payment' element={<PaymentWithHeader />} />
+          <Route path='/orders' element={<OrdersWithHeader />} />
         </Routes>
       </div>
     </Router>
@@ -76,6 +81,8 @@ const CheckoutWithHeader = () => {
     </>
   );
 }
+
+
 const PaymentWithHeader = () => {
   return (
     <>
@@ -83,6 +90,15 @@ const PaymentWithHeader = () => {
       <Elements stripe={promise}>
         <Payment />
       </Elements>
+    </>
+  );
+}
+
+const OrdersWithHeader = () => {
+  return (
+    <>
+      <Navbar />
+      <Orders />
     </>
   );
 }

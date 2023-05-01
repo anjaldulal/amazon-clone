@@ -35,10 +35,12 @@ function Navbar() {
                     </div>
                 </Link>
 
-                <div className="navbar-option">
-                    <span className='navbar-optionLineOne'>Returns</span>
-                    <span className='navbar-optionLineTwo'>& Orders</span>
-                </div>
+                <Link to='/orders' >
+                    <div className="navbar-option">
+                        <span className='navbar-optionLineOne'>Returns</span>
+                        <span className='navbar-optionLineTwo'>& Orders</span>
+                    </div>
+                </Link>
 
                 <div className="navbar-option">
                     <span className='navbar-optionLineOne'>Your</span>
